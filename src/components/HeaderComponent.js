@@ -3,22 +3,49 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
-
+import { useDispatch } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+import { addUser,removeUser } from "../utils/userSlice";
 
 const HeaderComponent = (prop)=>{
     const [loginState,setLoginState] = useState(prop.loginState)
-    // const navigate =useNavigate()
-    // const handleClick = ()=>{
-    //     console.log("clicked")
-    //     setPathType("/login")
-    //     navigate("/login")
-    // }
-    const navigate =useNavigate()
+    const dispatch=useDispatch()
     const selector = useSelector((store)=>store.user?.displayName)
+    const navigate = useNavigate();
+    useEffect(()=>{
+            if(auth.currentUser!==null) return
+            onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("auth changed")
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+                const emailId = user.email
+                const displayname = user.displayName
+                dispatch(addUser({uid:uid,email:emailId,displayName:displayname}))
+                navigate("/browse")
+                // ...
+            } else {
+                // User is signed out
+                // ...
+                console.log("auth changed")
+                console.log(auth.currentUser)
+                console.log(selector)
+                if(auth.currentUser===null && selector!==undefined){
+                    console.log("user removed from store")
+                    dispatch(removeUser())
+                }
+                navigate("/")
+            }
+            });
+        },[])
+
+    
     const handleSignout = ()=>{
         signOut(auth).then(() => {
             // Sign-out successful.
-            navigate("/")
+            //navigate("/")
             setLoginState("signed-out")
           }).catch((error) => {
             // An error happened.

@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { validate } from "../utils/validate";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -14,11 +13,10 @@ const StartingForm = ()=>{
     const email = useRef(null)
     const password = useRef(null)
     const name= useRef("")
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const toggleSigninSignup =()=>{
         setIsSignIn(!isSignIn);
-        console.log("isSignIn")
     }
     const handleSubmit =(e)=>{
         e.preventDefault();
@@ -26,7 +24,6 @@ const StartingForm = ()=>{
 
     const handleClick=()=>{
         //Validate form
-        console.log()
         const message = isSignIn?validate(email.current.value,password.current.value):validate(email.current.value,password.current.value,name.current.value);
         setErrorMessage(message);
 
@@ -45,12 +42,10 @@ const StartingForm = ()=>{
                     // Profile updated!
                     const {uid,email,displayName} =auth.currentUser
                     dispatch(addUser({uid:uid,email:email,displayName:displayName}))
-                    navigate("/browse")
 
                   }).catch((error) => {
                     // An error occurred
                   });
-                console.log(user)
                 
 
             })
@@ -66,8 +61,6 @@ const StartingForm = ()=>{
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user)
-                navigate("/browse")
             })
             .catch((error) => {
                 const errorCode = error.code;

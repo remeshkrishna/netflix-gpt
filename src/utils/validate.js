@@ -9,8 +9,6 @@ export const validate= (email,password,name="")=>{
     const isPassValid = passwordRegex.test(password);
 
     if( isEmailValid && isPassValid){
-        console.log(isNameValid)
-        console.log(name)
         if(name!=="" && !isNameValid){
             return "Email/Password not Valid";
         }
