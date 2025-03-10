@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import App from './App';
+
+import { signOut } from "firebase/auth";
+import { auth } from './utils/firebase';
+
+// signOut(auth)
+//   .then(() => {
+//     console.log("User signed out successfully");
+//   })
+//   .catch((error) => {
+//     console.error("Error signing out:", error);
+//   });
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <React.StrictMode>
-    <App />
+    <Provider store={appStore}>
+      <App/>
+    </Provider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
