@@ -12,7 +12,7 @@ const GPTSearch=()=>{
             <img
                 alt="loading..."
                 src={DEFAULT_BG_IMG}
-                className="bg-gradient-to-b from-black/95 to-black/50 h-screen w-screen z-0"
+                className="relative bg-gradient-to-b from-black/95 to-black/50 h-screen w-screen z-0 object-cover"
             />
             <GPTSearchBar/>
             <div className="bg-black -mb-10">

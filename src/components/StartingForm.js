@@ -72,7 +72,7 @@ const StartingForm = ()=>{
 
     return(
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-b">
-            <form onSubmit={(e)=>handleSubmit(e)} className="w-2/12 p-8 pb-8  flex flex-col absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white font-bold  place-items-center bg-black bg-opacity-80 rounded-md">
+            <form onSubmit={(e)=>handleSubmit(e)} className="p-8 pb-8  flex flex-col absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white font-bold  place-items-center bg-black bg-opacity-80 rounded-md md:w-2/12 ">
                 <h1 className="font-bold text-4xl m-2">{isSignIn?"Sign In":"Unlimited movies, TV shows and more"}</h1>
                 {!isSignIn && <input ref={name} className="w-full p-4 rounded-md m-4 bg-gray-800 bg-opacity-20  border border-s" type="text" placeholder="Username"/>}
                 <input ref={email} className="w-full p-4 rounded-md m-4 bg-gray-800 bg-opacity-20  border border-s" type="text" placeholder="Email or mobile number"/>

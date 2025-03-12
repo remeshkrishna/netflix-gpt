@@ -20,16 +20,16 @@ const VideoTitle =({video})=>{
     },[])
     if(!video) return
     return(
-        <div className="absolute w-3/12 text-white ml-[5%] mt-[10%]">
+        <div className="absolute flex flex-col h-[25%] md:w-3/12 text-white ml-[5%] md:mt-[10%]">
             {logo && <img
                 src={"https://image.tmdb.org/t/p/w500/"+logo}
-                className="w-6/12 "
+                className="w-3/12 h-auto md:w-6/12 mt-[80%] md:mt-auto"
             />}
             {/* <h1 className="font-bold text-4xl mt-4 mb-4">{video.title}</h1> */}
-            <p className="w-[55%] mt-6">{video.overview}</p>
+            <p className="w-full md:w-[55%] h-12 mt-6 contain-content md:h-full">{video.overview}</p>
             <div className="mt-2 text-black flex">
-                <button className="bg-gray-50 w-40 p-4  text-sm font-semibold rounded-md hover:bg-slate-400 hover:text-white" >▶️Play</button>
-                <button className="bg-gray-600 text-white w-40 p-4 text-sm font-semibold ml-2 rounded-md">More Info</button>
+                <button className="bg-gray-50 w-20 h-10 md:h-auto md:w-40 md:p-4  text-sm font-semibold rounded-md hover:bg-slate-400 hover:text-white" >▶️Play</button>
+                <button className="bg-gray-600 text-white w-20 h-10 md:h-auto md:w-40 md:p-4 text-sm font-semibold ml-2 rounded-md">More Info</button>
             </div>
         </div>
     )

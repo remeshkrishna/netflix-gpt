@@ -27,7 +27,7 @@ const MovieCard=({posterUrl,movie})=>{
         findLogoUrl(movie.id)
     }
     return(
-        <div className="min-w-48 max-w-48 m-4 mt-4 hover:scale-125" onClick={handleClick}>
+        <div className="min-w-24 m-2 mt-2 md:min-w-48 md:max-w-48 md:m-4 md:mt-4 md:hover:scale-125" onClick={handleClick}>
             <img className=" rounded-lg" src={"https://image.tmdb.org/t/p/w500/"+posterUrl} alt="Image..."/>
         </div>
     )

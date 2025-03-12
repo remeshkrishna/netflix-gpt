@@ -15,7 +15,7 @@ const MainBrowseComponent =()=>{
     
     if(!selector) return
     return(
-        <div className="relative w-screen h-screen">
+        <div className="relative w-screen h-screen bg-black">
             <BackgroundVideo/>
             <VideoTitle video={activeMovie}/>
         </div>

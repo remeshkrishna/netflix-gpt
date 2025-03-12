@@ -35,16 +35,16 @@ const GPTSearchBar=()=>{
     }
 
     return(
-        <div className="w-[50%] absolute  z-30 translate-x-1/2 translate-y-1/2 top-1/3 flex">
+        <div className="w-[80%] h-10 absolute  z-30 mx-[10%] top-32 flex md:w-[50%] md:mx-[25%] md:h-auto md:translate-y-1/2 md:top-1/3">
             <input 
                 type="text" 
                 placeholder="🔎How can i help you today?"
-                className="w-[80%] p-4 rounded-md border-black border-2"
+                className="w-[80%] p-2 rounded-md border-black border-2 md:p4"
                 ref={search}
                 />
             <button 
                 onClick={askGPT}
-                className="w-[20%] bg-blue-900 p-4 font-bold text-2xl ml-1 hover:bg-gray-600 text-white rounded-md border-2 border-black bg-gradient-to-b">Search</button>
+                className="w-[20%] bg-blue-900 font-bold  ml-1 hover:bg-gray-600 text-white rounded-md border-2 border-black bg-gradient-to-b md:text-2xl md:p-4">Search</button>
         </div>
     )
 }

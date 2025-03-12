@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 const BackgroundVideo =()=>{
     const selector =useSelector((store)=>store.movie.trailerId)
     return(
-        <div className="absolute w-screen h-screen overflow-hidden">
+        <div className="absolute w-screen mt h-[50%] md:h-screen overflow-hidden">
             <iframe
                 className="absolute"
                 style={{
