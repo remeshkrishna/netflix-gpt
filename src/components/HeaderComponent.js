@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { addUser,removeUser } from "../utils/userSlice";
-import { toggleGptSearch } from "../utils/gptSlice";
+import { toggleGptSearch} from "../utils/gptSlice";
 import { NETFLIX_LOGO } from "../utils/constants";
 
 const HeaderComponent = (prop)=>{
@@ -34,7 +34,9 @@ const HeaderComponent = (prop)=>{
                     if(auth.currentUser===null && selector!==undefined){
                         dispatch(removeUser())
                     }
-                    dispatch(toggleGptSearch())
+                    if(gptSelector===true){
+                        dispatch(toggleGptSearch())
+                    }
                     navigate("/")
                 }
                 })
