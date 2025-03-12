@@ -20,7 +20,6 @@ const HeaderComponent = (prop)=>{
             if(auth.currentUser!==null) return
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    console.log("auth changed")
                     // User is signed in, see docs for a list of available properties
                     // https://firebase.google.com/docs/reference/js/auth.user
                     const uid = user.uid;
@@ -32,13 +31,10 @@ const HeaderComponent = (prop)=>{
                 } else {
                     // User is signed out
                     // ...
-                    console.log("auth changed")
-                    console.log(auth.currentUser)
-                    console.log(selector)
                     if(auth.currentUser===null && selector!==undefined){
-                        console.log("user removed from store")
                         dispatch(removeUser())
                     }
+                    dispatch(toggleGptSearch())
                     navigate("/")
                 }
                 })

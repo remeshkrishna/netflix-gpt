@@ -10,9 +10,7 @@ export const useGetMovieTrailer=(movie)=>{
     const getTrailerId = async (id) => {
         const data = await fetch('https://api.themoviedb.org/3/movie/'+ id +'/videos?language=en-US', options);
         const dataJson = await data.json()
-        console.log(dataJson)
         const trailer = dataJson.results?.filter((item)=>item.type==="Trailer")
-        console.log(trailer)
         if(trailer?.length>0){
             dispatch(addTrailerId(trailer[0].key));
             dispatch(addActiveMovie(movie))
